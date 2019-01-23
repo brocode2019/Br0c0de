@@ -6,7 +6,7 @@ In the current day e-commerce world, every business needs a platform to showcase
 Our motive is to make web development for such customers easier and a creative task.
 
 ## Our Solution
-To overcome this problem and encourage people who aren't keen in learning computer languages to develop websites, we developed a standalone application, an application that can transform a graphical user interface screenshot into computer code in order to build customized websites.
+To overcome this problem and encourage people who aren't keen in learning computer languages to develop websites, we developed an application, an application that can transform a graphical user interface screenshot into computer code in order to build customized websites.
 
 ### Workflow
 * User pens down a user interface sketch on a sheet of paper.
