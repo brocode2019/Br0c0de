@@ -14,22 +14,18 @@ def arguements():
   parser.add_argument('--model_weights_file', dest='weights_file',required=True)
   parser.add_argument('--style',dest='style',default='default')
   parser.add_argument('--verbose',dest='verbose', default=1)
-
+  
   return parser
+parser = arguements()
+values= parser.parse_args()
+png_path = values.png_path
+output_path = values.output_path
+style=values.style
+json_file = values.json_file
+weights_file = values.weights_file
+verbose = values.verbose
+if not os.path.exists(output_path):
+    os.makedirs(output_path)
+plr =Plr(model_json_path=json_file,model_weights_path = weights_file)
+plr.convert_image(output_path, png_path=png_path, print_generated_output=verbose, style=style)
 
-def main():
-    parser = arguements()
-    values= parser.parse_args()
-    png_path = values.png_path
-    output_path = values.output_path
-    style=values.style
-    json_file = values.json_file
-    weights_file = values.weights_file
-    verbose = values.verbose
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-    sampler = Sampler(model_json_path=json_file,
-                      model_weights_path = weights_file)
-    sampler.convert_image(output_path, png_path=png_path, print_generated_output=verbose, style=style)
-if __name__ == "__main__":
-  main()
