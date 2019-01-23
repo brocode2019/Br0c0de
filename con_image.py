@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 from os.path import basename
 
 
-from classes.inference.Sampler import *
+from groups.codes.Plr import *
 
 def arguements():
   parser = ArgumentParser()
