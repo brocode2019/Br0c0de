@@ -30,6 +30,6 @@ def main():
         os.makedirs(output_path)
     sampler = Sampler(model_json_path=json_file,
                       model_weights_path = weights_file)
-    sampler.convert_single_image(output_path, png_path=png_path, print_generated_output=verbose, style=style)
+    sampler.convert_image(output_path, png_path=png_path, print_generated_output=verbose, style=style)
 if __name__ == "__main__":
   main()
