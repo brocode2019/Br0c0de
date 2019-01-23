@@ -16,6 +16,8 @@ To overcome this problem and encourage people who aren't keen in learning comput
 * Obtains a fully functional HTML structure of code.
 * Also, the site is made live, as soon as the code is generated.
 
+![wf1](https://user-images.githubusercontent.com/39125026/51636053-470ebf80-1f7e-11e9-918a-317b3d4f5ced.jpg)
+
 ## Technology Stack
 * Convolution Neural Network
 * Recursive Neural Network (LSTM)
