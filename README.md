@@ -6,7 +6,7 @@ In the current day e-commerce world, every business needs a platform to showcase
 Our motive is to make web development for such customers easier and a creative task.
 
 ## Our Solution
-To overcome this problem and encourage people who aren't keen in learning computer languages to develop websites, we developed an application, an application that can transform a graphical user interface screenshot into computer code in order to build customized websites.
+To overcome this problem and encourage people who aren't keen in learning computer languages to develop websites, we developed an 	application, an application that can transform a graphical user interface screenshot into computer code in order to build customized websites.
 
 ### Workflow
 * User pens down a user interface sketch on a sheet of paper.
@@ -24,11 +24,23 @@ To overcome this problem and encourage people who aren't keen in learning comput
 * HTML
 * Bootstrap (to make the site responsive)
 
+### Dependencies
+* Keras
+* Numpy
+* Opencv
+* Tensorflow
+
 ## Future Implementations
 We are we keen in making this project a real world application and handy to use.
 We are currently working on generating webpages. Further we would want to expand the reach of this project into Android app development.
 * Making it market ready by developing a standalone application which is open source.
 * Making the system open source would encourage contributers to generate more themes and add new externsions to the base application. 
+
+
+
+
+
+ 
 
 
 
