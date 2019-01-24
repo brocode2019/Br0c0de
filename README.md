@@ -18,6 +18,8 @@ To overcome this problem and encourage people who aren't keen in learning comput
 
 ![wf1](https://user-images.githubusercontent.com/39125026/51636053-470ebf80-1f7e-11e9-918a-317b3d4f5ced.jpg)
 
+![wf2](https://user-images.githubusercontent.com/39125026/51649744-b8b13280-1fab-11e9-9348-a9cd50bab721.png)
+
 ## Arguments Passed
 ```
 python con_image.py --png_path ../examples/index.png --output_folder ./output_html --model_json_file ./weights/json_model.json --model_weights_file ./weights/weights.h5
