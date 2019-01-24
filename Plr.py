@@ -1,18 +1,22 @@
-import json
+import os
 import numpy as np
 import cv2
+import subprocess
+
 
 from keras.models import model_from_json
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
+from .Compiler import *
+
 
 DICTION_FILE ='./dictionary.vocab'
 MAX_LENGTH = 48  ##Input size that the model will take
 
 class Plr:
 
-    def __init__(self, model_json_path=None, model_weights_path=None):
-        self.tokenizer, self.vocab_size = self.load_vocab()
+    def __init__(self, json_path=None, weights_path=None):
+        self.tokenizer = self.load_vocab()
         self.model = self.load_model(json_path,weights_path)
 
     def convert_image(self, output_path, png_path, verbose, style):
@@ -22,15 +26,20 @@ class Plr:
         input_image = png_filename[:png_filename.find('.png')]
         print("Generating Computer code for given Image:{}".format(input_image))
         generated_gui, gui_output_filepath= self.get_gui(png_path,verbose=verbose, output_path=output_path, input_image=input_image)
+	generated_html = self.get_html(generated_gui, input_image, verbose=verbose, output_path=output_path, style=style)
+
+
+
+
         
 
 
     def load_model(self, json_path,weights_path):
-        json_file = open(model_json_path, 'r')
+        json_file = open(json_path, 'r')
         loaded_model_json = json_file.read()
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
-        loaded_model.load_weights(model_weights_path)
+        loaded_model.load_weights(weights_path)
         
         return loaded_model
 
@@ -41,14 +50,14 @@ class Plr:
         initial_gui = '<START> '
         input_array = np.array([img_features])
         for i in range(150):
-            sequence = self.tokenizer.texts_to_sequences([in_text])[0]
+            sequence = self.tokenizer.texts_to_sequences([initial_gui])[0]
             sequence = pad_sequences([sequence], maxlen=MAX_LENGTH)
             prediction = self.model.predict([input_array, sequence], verbose=0)
             prediction = np.argmax(prediction)
             predicted_word = self.word_for_id(prediction)
             if predicted_word is None:
                 break
-            initial_gui += word + ' '
+            initial_gui += predicted_word + ' '
             if predicted_word == '<END>':
                 break
 
@@ -58,7 +67,7 @@ class Plr:
             print("\n++++++++\nGenerated GUI code:")
             print(generated_gui)
 
-        gui_output_filepath = self.save_gui_to_disk(generated_gui, sample_id, output_folder)
+        gui_output_filepath = self.saving_generated_gui(generated_gui, input_image, output_path)
 
         return generated_gui, gui_output_filepath    
 
@@ -85,6 +94,60 @@ class Plr:
         all_ones_img[27:227, 27:227,:] = resized_img
         all_ones_img /= 255
         return all_ones_img
+    
+    def saving_generated_gui(self, gui_array, sample_id, output_folder):
+        gui_output_filepath = "{}/{}.gui".format(output_folder, sample_id)
+        with open(gui_output_filepath, 'w') as out_f:
+            out_f.write(' '.join(gui_array))
+        return gui_output_filepath
+
+
+
+
+    
+
+    def get_html(self, generated_gui_array,sample_id, verbose,output_path, style='default'):
+
+        compiler = Compiler(style)
+        compiled_website = compiler.compile(generated_gui_array)
+
+        if verbose is 1:
+            print("\n Generated Computer Code:")
+            print(compiled_website)
+
+
+
+        if compiled_website != 'HTML Parsing Error':
+            output_filepath = "{}/{}.html".format(output_path, sample_id)
+            with open(output_filepath, 'w') as output_file:
+                output_file.write(compiled_website)
+                print("generated HTML Saved to {}".format(output_filepath))
+
+	#subprocess.call(["cd"])
+	#subprocess.call(["cd","Desktop"])
+	#subprocess.call(["cd","brocode2019.github.io"])
+	os.chdir("brocode2019.github.io")
+	#subprocess.call(["cd","brocode2019.github.io"])
+	subprocess.call(["git","add","index.html"])
+	print("done 1")
+	subprocess.call(["git","commit","-m","\"commit\""])
+	print("done 2")
+	subprocess.call(["git","push","origin","master"])
+	print("done 3")
+	return compiled_website
+
+    def word_for_id(self, integer):
+        for word, index in self.tokenizer.word_index.items():
+            if index == integer:
+                return word
+        return None
+
+
+    
+
+
+
+
 
 
 
