@@ -33,6 +33,7 @@ To overcome this problem and encourage people who aren't keen in learning comput
 ```
 python con_image.py --png_path ../examples/index.png --output_folder ./output_html --model_json_file ./weights/json_model.json --model_weights_file ./weights/weights.h5
 ```
+Note: The user also requires the weights which are not in this repo because of the extended overheads. 
 
 ## Technology Stack
 * Convolution Neural Network
