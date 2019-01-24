@@ -16,9 +16,17 @@ def arguements():
   parser.add_argument('--verbose',dest='verbose', default=1)
   
   return parser
+
+print("Do you want to Take 1.PhoneCameraPic\t2.Input Pic Manually ")
+choice=input()
 parser = arguements()
 values= parser.parse_args()
-png_path = values.png_path
+if choice==1:
+	urllib.urlretrieve("http://192.168.43.1:8080/shot.jpg","./index.jpg")
+	Image.open("./index.jpg").save("./index.png")
+	png_path="./index.png"
+else:
+	png_path = values.png_path
 output_path = values.output_path
 style=values.style
 json_file = values.json_file
@@ -27,5 +35,5 @@ verbose = values.verbose
 if not os.path.exists(output_path):
     os.makedirs(output_path)
 plr =Plr(model_json_path=json_file,model_weights_path = weights_file)
-plr.convert_image(output_path, png_path=png_path, print_generated_output=verbose, style=style)
+plr.convert_image(output_path, png_path=png_path, verbose=verbose, style=style)
 
