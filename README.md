@@ -18,7 +18,16 @@ To overcome this problem and encourage people who aren't keen in learning comput
 
 ![wf1](https://user-images.githubusercontent.com/39125026/51636053-470ebf80-1f7e-11e9-918a-317b3d4f5ced.jpg)
 
-![wf2](https://user-images.githubusercontent.com/39125026/51649744-b8b13280-1fab-11e9-9348-a9cd50bab721.png)
+![wf2](https://user-images.githubusercontent.com/39125026/51651572-7fc88c00-1fb2-11e9-8343-d24bec6d11c6.png)
+
+## Establishing Phone Camera Scanner
+* Application used : IP Webcam
+### Python code
+```
+ urllib.urlretrieve("http://192.168.43.1:8080/shot.jpg","./index.jpg")
+	Image.open("./index.jpg").save("./index.png")
+	png_path="./index.png"
+ ```
 
 ## Arguments Passed
 ```
