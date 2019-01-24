@@ -47,11 +47,14 @@ As our project is generally for non-techinical users, we assume they dont unders
 We have implemented this in the *sslconfiguration.conf* file, in the repo above.
 
 
-### Dependencies
+## Dependencies
 * Keras
 * Numpy
 * Opencv
 * Tensorflow
+
+## I/O
+![output](https://user-images.githubusercontent.com/39125026/51658021-a398cb80-1fcc-11e9-84b7-b502e184b916.jpg)
 
 ## Future Implementations
 We are we keen in making this project a real world application and handy to use.
