@@ -31,6 +31,11 @@ python con_image.py --png_path ../examples/index.png --output_folder ./output_ht
 * HTML
 * Bootstrap (to make the site responsive)
 
+## Additional Perks (Security) [MIDNIGHT SURPEISE]
+As our project is generally for non-techinical users, we assume they dont understand the *difference between HTTPS and HTTP protocols*. To address this problem, we have implemented additional configuration in the server side which redirects the user to HTTPS in case they have used HTTP. This would prevent them from *MITM (Man In The Middle) attacks*.
+We have implemented this in the *sslconfiguration.conf* file, in the repo above.
+
+
 ### Dependencies
 * Keras
 * Numpy
